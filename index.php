@@ -42,7 +42,7 @@
         z-index: -1;
         background: url(<?php echo 'https://' . $_SERVER['HTTP_HOST'] . '/' . $_GET["id"] . '.' . $_GET["type"]. ' '; ?>) no-repeat center center;
         background-size: cover;
-        filter: blur(10px);
+        filter: blur(5px);
         transform: scale(1.3)
     }
 
