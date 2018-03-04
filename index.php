@@ -33,18 +33,6 @@
     }
 
     #page:before {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        filter: blur(20px);
-        transform: scale(1.5);
-
-    }
-
-    #page:before {
         position: absolute;
         content: "";
         top: 0;
@@ -54,8 +42,8 @@
         z-index: -1;
         background: url(<?php echo 'https://' . $_SERVER['HTTP_HOST'] . '/' . $_GET["id"] . '.' . $_GET["type"]. ' '; ?>) no-repeat center center;
         background-size: cover;
-        filter: blur(20px);
-        transform: scale(1.5)
+        filter: blur(10px);
+        transform: scale(1.3)
     }
 
     #page {
