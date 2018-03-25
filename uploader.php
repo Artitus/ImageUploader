@@ -1,6 +1,6 @@
 <?php
 
-$secret_key = "penislicker"; //Set this as your secret key, to prevent others uploading to your server.
+$secret_key = "*********"; //Set this as your secret key, to prevent others uploading to your server.
 $sharexdir = ""; //This is your file dir, also the link..
 $domain_url = 'https://ma.ssive.wang/';
 $lengthofstring = 5; //Length of the file name
