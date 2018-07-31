@@ -1,8 +1,8 @@
 <?php
 
-$secret_key = "*********"; //Set this as your secret key, to prevent others uploading to your server.
+$secret_key = "**********"; //Set this as your secret key, to prevent others uploading to your server.
 $sharexdir = "i/"; //This is your file dir, also the link..
-$domain_url = 'https://ma.ssive.wang/';
+$domain_url = 'https://ma.ssive.wang';
 $lengthofstring = 5; //Length of the file name
 
 function RandomString($length) {
@@ -24,7 +24,7 @@ if(isset($_POST['secret']))
 
         if (move_uploaded_file($_FILES["sharex"]["tmp_name"], $sharexdir.$filename.'.'.$fileType))
         {
-            echo $domain_url.'index.php?id='.$filename.'&type='.$fileType;
+            echo $domain_url.'/'.$fileType.'/'.$filename;
         }
         else
         {
