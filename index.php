@@ -1,4 +1,16 @@
-<!doctype html>
+<?php
+
+$image_dir = 'i';
+
+$url = 'https://' . $_SERVER['HTTP_HOST'];
+$path = explode("/", $_SERVER['REQUEST_URI']);
+$file_id = $path[2];
+$file_type = $path[1];
+$image_local = $image_dir . '/' . $file_id . '.' . $file_type;
+$image = $url . '/' . $image_dir . '/' . $file_id . '.' . $file_type;
+$upload_date = date("d F Y g:i A T", filemtime($image_local));
+
+echo <<<EOT
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,17 +27,9 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Artitus' File Uploader"/>
     <meta property="og:description"
-          content="Uploaded on <?php $path = explode("/", $_SERVER['REQUEST_URI']); echo date("F d Y H:i:s.", filemtime('i/' . $path[2] . '.' . $path[1])); ?>"/>
-    <meta property="og:url" content="<?php echo 'https:/' . $_SERVER['REQUEST_URI']; ?>"/>
-    <?php
-    $path = explode("/", $_SERVER['REQUEST_URI']);
-    if ($path[1] == "png" || $path[1] == "gif" || $path[1] == "jpg") {
-        list($width, $height) = getimagesize($path[2] . '.' . $path[1]);
-        echo '<meta property="og:image" content="https://' . $_SERVER['HTTP_HOST'] . '/i/' . $path[2] . '.' . $path[1] . '"/>';
-    } else if ($path[1] == "mp4") {
-        echo '<meta property="og:video" content="https://' . $_SERVER['HTTP_HOST'] . '/i/' . $path[2] . '.' . $path[1] . '" />';
-    }
-    ?>
+          content="Uploaded on $upload_date"/>
+    <meta property="og:url" content="$url"/>
+    <meta property="og:image" content="$image" />
 </head>
 
 <style>
@@ -42,7 +46,7 @@
         height: 100%;
         width: 100%;
         z-index: -1;
-        background: url(<?php $path = explode("/", $_SERVER['REQUEST_URI']); echo 'https://' . $_SERVER['HTTP_HOST'] . "/i/" . $path[2] . "." . $path[1] . ''; ?>) no-repeat center center;
+        background: url($image) no-repeat center center;
         background-size: cover;
         filter: blur(5px);
         transform: scale(1.3)
@@ -78,16 +82,12 @@
 
 <div id="page">
     <div class="content">
-        <?php
-        $path = explode("/", $_SERVER['REQUEST_URI']);
-        if ($path[1] == "png" || $path[1] == "gif" || $path[1] == "jpg") {
-            echo '<img src="https://' . $_SERVER['HTTP_HOST'] . '/i/' . $path[2] . '.' . $path[1] . '"/>';
-        } else {
-            echo 'y u not has gud lenk?';
-        }
-        ?>
+            <img src="$image" />
     </div>
 </div>
 
 </body>
 </html>
+EOT;
+
+?>
