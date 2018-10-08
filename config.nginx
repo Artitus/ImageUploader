@@ -2,7 +2,7 @@ server {
         listen 80;
 
         root /var/www/images;
-        index index.php index.html index.htm index.nginx-debian.html;
+        index index.php;
         server_name example.com;
 
         location / {
