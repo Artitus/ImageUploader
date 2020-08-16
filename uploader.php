@@ -24,7 +24,7 @@ if(isset($_POST['secret']))
 
         if (move_uploaded_file($_FILES["sharex"]["tmp_name"], $sharexdir.$filename.'.'.$fileType))
         {
-            echo $domain_url.'/'.$fileType.'/'.$filename;
+            echo $domain_url.'/'.$filename.'.'.$fileType;
         }
         else
         {
